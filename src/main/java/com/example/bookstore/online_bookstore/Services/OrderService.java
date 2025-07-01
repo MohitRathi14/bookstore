@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.bookstore.online_bookstore.Entity.Order;
-import com.example.bookstore.online_bookstore.Entity.User;
-import com.example.bookstore.online_bookstore.Entity.OrderItem;
-import com.example.bookstore.online_bookstore.Entity.CartItem;
-import com.example.bookstore.online_bookstore.Repositories.OrderRepository;
+
+import com.example.bookstore.online_bookstore.modle.CartItem;
+import com.example.bookstore.online_bookstore.modle.Order;
+import com.example.bookstore.online_bookstore.modle.OrderItem;
+import com.example.bookstore.online_bookstore.modle.User;
+import com.example.bookstore.online_bookstore.repositories.OrderRepository;
 
 @Service
 public class OrderService {

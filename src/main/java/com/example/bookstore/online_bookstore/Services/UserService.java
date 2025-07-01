@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
-import com.example.bookstore.online_bookstore.Entity.User;
-import com.example.bookstore.online_bookstore.Repositories.UserRepository;
+
+import com.example.bookstore.online_bookstore.modle.User;
+import com.example.bookstore.online_bookstore.repositories.UserRepository;
 
 import java.util.Collections;
 

@@ -3,8 +3,9 @@ package com.example.bookstore.online_bookstore.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.bookstore.online_bookstore.Entity.Book;
-import com.example.bookstore.online_bookstore.Repositories.BookRepository;
+import com.example.bookstore.online_bookstore.modle.Book;
+import com.example.bookstore.online_bookstore.repositories.BookRepository;
+
 import java.util.List;
 
 @Service

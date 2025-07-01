@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.bookstore.online_bookstore.Entity.Book;
-import com.example.bookstore.online_bookstore.Entity.CartItem;
-import com.example.bookstore.online_bookstore.Entity.User;
-import com.example.bookstore.online_bookstore.Repositories.CartItemRepository;
+import com.example.bookstore.online_bookstore.modle.Book;
+import com.example.bookstore.online_bookstore.modle.CartItem;
+import com.example.bookstore.online_bookstore.modle.User;
+import com.example.bookstore.online_bookstore.repositories.CartItemRepository;
 import com.example.bookstore.online_bookstore.Dto.CartItemDTO;
 
 @Service
