@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.bookstore.online_bookstore.Dto.OrderDTO;
+import com.example.bookstore.online_bookstore.Dto.OrderItemDTO;
 import com.example.bookstore.online_bookstore.modle.CartItem;
 import com.example.bookstore.online_bookstore.modle.Order;
 import com.example.bookstore.online_bookstore.modle.OrderItem;
@@ -48,4 +50,21 @@ public class OrderService {
             .filter(order -> order.getUser().getId().equals(user.getId()))
             .collect(Collectors.toList());
     }
+    public OrderDTO convertToOrderDTO(Order order) {
+        List<OrderItemDTO> itemDTOs = order.getItems().stream()
+            .map(item -> new OrderItemDTO(
+                item.getBook().getTitle(),
+                item.getQuantity(),
+                item.getPrice()
+        ))
+        .collect(Collectors.toList());
+
+        return new OrderDTO(
+            order.getId(),
+            order.getTotalAmount(),
+            order.getOrderDate(),
+            itemDTOs
+        );
+}
+
 }
