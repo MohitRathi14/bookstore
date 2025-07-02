@@ -23,4 +23,7 @@ public class BookService {
     public void addBook(Book book) {
         bookRepo.save(book);
     }
+    public Book findById(Long id) {
+        return bookRepo.findById(id).orElse(null);
+    }
 }
