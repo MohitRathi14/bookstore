@@ -15,11 +15,11 @@ import com.example.bookstore.online_bookstore.Services.UserService;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder; // ✅ inject instead of calling the method
+    public SecurityConfig(UserService userService) {
+        this.userService = userService;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -43,12 +43,13 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
             )
-            .csrf(csrf -> csrf.disable()); // Only for development!
+            .csrf(csrf -> csrf.disable());
+
         return http.build();
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder); // ✅ use injected bean
+    public void configureGlobal(AuthenticationManagerBuilder auth, PasswordEncoder passwordEncoder) throws Exception {
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
     }
 }
