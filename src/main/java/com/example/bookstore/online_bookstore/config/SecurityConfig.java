@@ -16,14 +16,16 @@ import com.example.bookstore.online_bookstore.Services.UserService;
 public class SecurityConfig {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     public SecurityConfig(UserService userService) {
         this.userService = userService;
+        this.passwordEncoder = new BCryptPasswordEncoder(); // directly initialized here
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return this.passwordEncoder;
     }
 
     @Bean
@@ -49,7 +51,7 @@ public class SecurityConfig {
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth, PasswordEncoder passwordEncoder) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
     }
 }
