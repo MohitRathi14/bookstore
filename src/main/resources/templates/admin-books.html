@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Admin - Book Management</title></head>
+<head>
+    <title>Admin - Manage Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <body>
-<h2>Admin Panel: Books</h2>
-<a href="/admin/books/new">Add New Book</a>
-<table>
-    <thead>
-        <tr><th>Title</th><th>Author</th><th>Price</th><th>Actions</th></tr>
-    </thead>
-    <tbody>
-        <tr th:each="book : ${books}">
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.price}"></td>
-            <td>
-                <a th:href="@{'/admin/books/edit/' + ${book.id}}">Edit</a> |
-                <a th:href="@{'/admin/books/delete/' + ${book.id}}">Delete</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div th:replace="fragments/navbar :: *"></div>
+
+<div class="container mt-4">
+    <h2>Manage Books</h2>
+    <a class="btn btn-success mb-3" href="/admin/books/new">Add New Book</a>
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th><th>Author</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.category}"></td>
+                <td th:text="${book.price}"></td>
+                <td th:text="${book.stock}"></td>
+                <td>
+                    <a th:href="@{'/admin/books/edit/' + ${book.id}}" class="btn btn-sm btn-warning">Edit</a>
+                    <a th:href="@{'/admin/books/delete/' + ${book.id}}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
