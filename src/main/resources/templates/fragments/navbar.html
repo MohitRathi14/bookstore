@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">BookStore</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" href="/books">Books</a></li>
-                <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
-                <li class="nav-item"><a class="nav-link" href="/orders">Orders</a></li>
-            </ul>
+<div th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">BookStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <ul class="navbar-nav">
-                <!-- If user is not authenticated -->
-                <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" href="/register">Register</a>
-                </li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="/books">Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orders">Orders</a></li>
+                </ul>
 
-                <!-- If user is authenticated -->
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <span class="navbar-text text-light me-2">
-                        Welcome, <span sec:authentication="name"></span>
-                    </span>
-                </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
-            </ul>
+                <ul class="navbar-nav">
+                    <!-- If user is not authenticated -->
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+
+                    <!-- If user is authenticated -->
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <span class="navbar-text text-light me-2">
+                            Welcome, <span sec:authentication="name"></span>
+                        </span>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>
+
 </body>
 </html>
