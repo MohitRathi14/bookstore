@@ -1,4 +1,5 @@
 package com.example.bookstore.online_bookstore.modle;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -12,16 +13,18 @@ public class Book {
   private String author;
   private String category;
   private double price;
-  private int stock;
+  @Column(name = "image_name")
+
+  private String imageName;
   
     public Book() {
     }
-    public Book(String title, String author, String category, double price, int stock) {
+    public Book(String title, String author, String category, double price, String imageName) {
         this.title = title;
         this.author = author;
         this.category = category;
         this.price = price;
-        this.stock = stock;
+        this.imageName = imageName;
     }
 
   public String getTitle() {
@@ -50,16 +53,17 @@ public class Book {
     public void setPrice(double price) {
         this.price = price;
     }   
-    public int getStock() {
-        return stock;
-    }
-    public void setStock(int stock) {
-        this.stock = stock;
-    }   
+    
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public String getImageName() {
+        return imageName;
+    }
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }
