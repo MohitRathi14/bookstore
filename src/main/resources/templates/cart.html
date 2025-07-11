@@ -28,7 +28,7 @@
                 <td th:text="${item.quantity}"></td>
                 <td th:text="₹ + ${item.totalPrice}"></td>
                 <td>
-                    <form th:action="@{'/cart/remove/' + ${item.id}}" method="post">
+                    <form th:action="@{'/cart/remove/' + ${item.bookId}}" method="post">
                         <button class="btn btn-sm btn-danger">Remove</button>
                     </form>
                 </td>
