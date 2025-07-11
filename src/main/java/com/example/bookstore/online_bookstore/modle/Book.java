@@ -14,7 +14,6 @@ public class Book {
   private String category;
   private double price;
   @Column(name = "image_name")
-
   private String imageName;
   
     public Book() {
