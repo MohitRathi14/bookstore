@@ -6,14 +6,16 @@ public class CartItemDTO {
     private double bookPrice;
     private int quantity;
     private double totalPrice;
+    private long bookId;
 
     public CartItemDTO() {}
 
-    public CartItemDTO(String bookTitle, double bookPrice, int quantity) {
+    public CartItemDTO(String bookTitle, double bookPrice, int quantity, long bookId) {
         this.bookTitle = bookTitle;
         this.bookPrice = bookPrice;
         this.quantity = quantity;
         this.totalPrice = bookPrice * quantity;
+        this.bookId = bookId;
     }
 
     // Getters and Setters
@@ -45,5 +47,11 @@ public class CartItemDTO {
 
     public double getTotalPrice() {
         return totalPrice;
+    }
+    public void setBookID(long bookId) {
+        this.bookId = bookId;
+    }
+    public long getBookId() {
+        return bookId;
     }
 }
