@@ -37,7 +37,8 @@ public class CartService {
             .map(item -> new CartItemDTO(
                 item.getBook().getTitle(),
                 item.getBook().getPrice(),
-                item.getQuantity()
+                item.getQuantity(),
+                item.getBook().getId()
             ))
             .collect(Collectors.toList());
     }
