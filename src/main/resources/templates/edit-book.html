@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-4">
+    <h2>Edit Book</h2>
+
+    <form th:action="@{/admin/books/update}" method="post" th:object="${book}" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" th:field="*{title}" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Author</label>
+            <input type="text" th:field="*{author}" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Price</label>
+            <input type="number" th:field="*{price}" class="form-control" required />
+        </div>
+
+        <!-- Show current image if exists -->
+        <div class="mb-3" th:if="${book.imageName}">
+            <label class="form-label">Current Image:</label><br>
+            <img th:src="@{'/uploads/' + ${book.imageName}}" alt="Book Image" class="img-thumbnail" style="max-height: 150px;">
+        </div>
+
+        <!-- Upload new image -->
+        <div class="mb-3">
+            <label class="form-label">Change Image</label>
+            <input type="file" name="image" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Update Book</button>
+    </form>
+</div>
+</body>
+</html>
